@@ -30,18 +30,18 @@ def stand(dealers_cards:list,my_cards:list)->bool:
     elif dealers_total_cards > 21:
         print('Opponent went over. You win 😁')
     else:
-        if a_players_total_cards > dealers_total_cards:
-            if a_players_total_cards == 21:
-                print("Win, you have Blackjack 😱")
-            else:
-                print("You win 😁")
-        elif a_players_total_cards == dealers_total_cards:
-            print("Draw 🙃")
+        if dealers_total_cards == 21:
+            print("Lose, opponent has Blackjack 😱")
         else:
-            if dealers_total_cards == 21:
-                print("Lose, opponent has Blackjack 😱")
+            if a_players_total_cards > dealers_total_cards:
+                if a_players_total_cards == 21:
+                    print("Win, you have Blackjack 😱")
+                else:
+                    print("You win 😁")
+            elif a_players_total_cards == dealers_total_cards:
+                print("Draw 🙃")
             else:
-                print("You lose 😤")
+                 print("You lose 😤")
 
     return False
 
