@@ -15,7 +15,7 @@ def check_for_ace_in_list(item:list):
             if sum(item) > 21:
                 item[ace_index] = 1
 
-def compare(dealers_cards:list,players_cards:list):
+def compare_cards_in_hand(dealers_cards:list,players_cards:list):
     """Compares both player's and dealer's card at hand, in other
        to print out the final result.
     """
@@ -62,7 +62,7 @@ def stand(dealers_cards:list,my_cards:list)->bool:
     dealers_total_cards = sum(dealers_cards)
     print(f"Your final hand: {my_cards}, final score: {a_players_total_cards}")
     print(f"Computer's final hand: {dealers_cards},final score: {dealers_total_cards}")
-    compare(dealers_cards=dealers_cards,players_cards=my_cards)
+    compare_cards_in_hand(dealers_cards=dealers_cards,players_cards=my_cards)
     return False
 
 
@@ -88,7 +88,7 @@ def hit(my_cards:list,dealers_cards:list)-> bool:
 
 
     print(f'Your cards: {my_cards}, current score: {players_total_cards}')
-    print(f"Computer's first card: {dealers_cards[1]}")
+    print(f"Computer's first card: {dealers_cards[0]}")
     return True
 
 def black_jack():
@@ -107,7 +107,7 @@ def black_jack():
         dealers_cards.append(random.choice(cards))
 
     print(f"Your cards: {my_cards}")
-    print(f"Computer's first card: {dealers_cards[1]}")
+    print(f"Computer's first card: {dealers_cards[0]}")
     hit_again = True
     while hit_again:
         player_choice = input("Type 'y' to get another card, type 'n' to pass: ").lower()
