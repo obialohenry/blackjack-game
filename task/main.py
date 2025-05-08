@@ -15,6 +15,29 @@ def check_for_ace_in_list(item:list):
             if sum(item) > 21:
                 item[ace_index] = 1
 
+def compare(dealers_cards:list,players_cards:list):
+    """Compares both player's and dealer's card at hand, in other
+       to print out the final result.
+    """
+    a_players_total_cards = sum(players_cards)
+    dealers_total_cards = sum(dealers_cards)
+
+    if a_players_total_cards > 21:
+        print("You went over. You lose 😭")
+    elif dealers_total_cards > 21:
+        print('Opponent went over. You win 😁')
+    elif dealers_total_cards == 21 and len(dealers_cards) == 2:
+        print("Lose, opponent has Blackjack 😱")
+    elif a_players_total_cards == 21 and len(players_cards) == 2:
+        print("Win, you have Blackjack 😱")
+    elif a_players_total_cards > dealers_total_cards:
+        print("You win 😁")
+    elif a_players_total_cards == dealers_total_cards:
+        print("Draw 🙃")
+    else:
+        print("You lose 😤")
+
+
 def stand(dealers_cards:list,my_cards:list)->bool:
     """When the player chooses to stand[To not chose another card],
        the total cards for both dealer and player are calculated taking into
@@ -39,24 +62,7 @@ def stand(dealers_cards:list,my_cards:list)->bool:
     dealers_total_cards = sum(dealers_cards)
     print(f"Your final hand: {my_cards}, final score: {a_players_total_cards}")
     print(f"Computer's final hand: {dealers_cards},final score: {dealers_total_cards}")
-    if a_players_total_cards > 21:
-        print("You went over. You lose 😭")
-    elif dealers_total_cards > 21:
-        print('Opponent went over. You win 😁')
-    else:
-        if dealers_total_cards == 21:
-            print("Lose, opponent has Blackjack 😱")
-        else:
-            if a_players_total_cards > dealers_total_cards:
-                if a_players_total_cards == 21:
-                    print("Win, you have Blackjack 😱")
-                else:
-                    print("You win 😁")
-            elif a_players_total_cards == dealers_total_cards:
-                print("Draw 🙃")
-            else:
-                 print("You lose 😤")
-
+    compare(dealers_cards=dealers_cards,players_cards=my_cards)
     return False
 
 
